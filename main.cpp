@@ -4,12 +4,17 @@
 
 #include <iostream>
 #include <cassert>
+#include <string>
+#include <sstream> // for std::stringstream
+#include <fstream>
+#include <cstdlib>
 #include <ctime>
 //Σημείωση: Για την υλοποίηση του χρόνου να χρησιμοποιήσετε τον τύπο time t οι δηλώσεις
 //του οποίου βρίσκονται στο αρχείο-επικεφαλίδα ctime .
 
 using std::cout;
 using std::cin;
+using std::string;
 
 // Returns randomly true with a given probability between 0 and 1
 // Assumes srand() has already been called
@@ -35,21 +40,28 @@ int getRandomNumber(int min, int max)
 class Application
 {
 private:
-// το id του επιβάτη, 
+    // το id του επιβάτη, 
+    int id;
+    
+    // το όνομά του, 
+    string fName;
+    
+    // επώνυμο, 
+    string lName;
+    
+    // προορισμό, 
+    int destination;
 
-// το όνομά του, 
+    // χρόνο που θέλει για να φτάσει στο αεροδρόμιο 
+    // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο με χρόνο αναχώρησης πριν από αυτόν), 
+    int timeToTheAirport;
 
-// επώνυμο, 
+    // χρόνο που θέλει να έχει φτάσει στον προορισμό του 
+    // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο που φτάνει μετά από αυτόν τον χρόνο)
+    int arrivalTimeLimit;
 
-// προορισμό, 
-
-// χρόνο που θέλει για να φτάσει στο αεροδρόμιο 
-// (δεν μπορεί να επιβιβαστεί σε αεροπλάνο με χρόνο αναχώρησης πριν από αυτόν), 
-
-// χρόνο που θέλει να έχει φτάσει στον προορισμό του 
-// (δεν μπορεί να επιβιβαστεί σε αεροπλάνο που φτάνει μετά από αυτόν τον χρόνο)
-
-// αν θέλει να είναι στην οικονομική θέση του αεροπλάνου ή όχι (θέσεις Α και Β). 
+    // αν θέλει να είναι στην οικονομική θέση του αεροπλάνου ή όχι (θέσεις Α και Β). 
+    bool firstClass;
 
 
 public:
@@ -168,12 +180,53 @@ public:
 
 };
 
-int main()
+int main(int argc, char* argv[])
 {
+    using std::ifstream;
+    using std::endl;
+    using std::cerr;
     
 // Το χρονικό διάστημα να δίδεται από τη γραμμή εντολής. 
+	if (argc <= 1)
+	{
+		// On some operating systems, argv[0] can end up as an empty string instead of the program's name.
+		// We'll conditionalize our response on whether argv[0] is empty or not.
+		if (argv[0])
+			std::cout << "Usage: " << argv[0] << " <number>" << '\n';
+		else
+			std::cout << "Usage: <program name> <number>" << '\n';
+ 
+		exit(1);
+	}
+ 
+	std::stringstream convert(argv[1]); // set up a stringstream variable named convert, initialized with the input from argv[1]
+ 
+    int timeUnits;
+	if (!(convert >> timeUnits)) // do the conversion
+		timeUnits = 0; // if conversion fails, set timeUnits to a default value
+ 
+	std::cout << "Simulations duration: " << timeUnits << " time units\n";
 
-// Τα στοιχεία των πτήσεων και των αιτήσεων να διαβάζονται από αρχεία.
+    // Τα στοιχεία των πτήσεων και των αιτήσεων να διαβάζονται από αρχεία.
+    // We'll read from a file called Flights.csv
+    ifstream inf("Flights.csv");
+ 
+    // If we couldn't open the input file stream for reading
+    if (!inf)
+    {
+        // Print an error and exit
+        cerr << "Uh oh, Flights.txt could not be opened for reading!" << endl;
+        exit(1);
+    }
+ 
+    // While there's still stuff left to read
+    while (inf)
+    {
+        // read stuff from the file into a string and print it
+        std::string strInput;
+        getline(inf, strInput);
+        cout << strInput << endl;
+    }
     
 // 1. Θα δημιουργείται ένα αεροδρόμιο
 
