@@ -6,7 +6,7 @@
 args="50"
 
 repo="https://github.com/georodop/Airport-Simple-Simulation-using-Cpp.git"
-dir="Metro-Train-Simple-Simulation-using-Cpp"
+dir="metro-train-simple-simulation-using-cpp"
 progName="airport.out"
 flags="-std=c++98"
 
