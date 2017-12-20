@@ -5,12 +5,11 @@
 #include <iostream>
 #include <cassert>
 #include <string>
-#include <sstream> // for std::stringstream
+#include <sstream>          // for std::stringstream
 #include <fstream>
-#include <cstdlib>
-#include <ctime>
-//Σημείωση: Για την υλοποίηση του χρόνου να χρησιμοποιήσετε τον τύπο time t οι δηλώσεις
-//του οποίου βρίσκονται στο αρχείο-επικεφαλίδα ctime .
+#include <cstdlib>          //For rand()
+#include <ctime>            //For time_t
+#include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
 
 using std::cout;
 using std::cin;
@@ -36,52 +35,6 @@ int getRandomNumber(int min, int max)
     return min + static_cast<int>((max - min + 1) * (rand() * fraction));
 }
 
-
-class Application
-{
-private:
-    // το id του επιβάτη, 
-    int id;
-    
-    // το όνομά του, 
-    string fName;
-    
-    // επώνυμο, 
-    string lName;
-    
-    // προορισμό, 
-    int destination;
-
-    // χρόνο που θέλει για να φτάσει στο αεροδρόμιο 
-    // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο με χρόνο αναχώρησης πριν από αυτόν), 
-    int timeToTheAirport;
-
-    // χρόνο που θέλει να έχει φτάσει στον προορισμό του 
-    // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο που φτάνει μετά από αυτόν τον χρόνο)
-    int arrivalTimeLimit;
-
-    // αν θέλει να είναι στην οικονομική θέση του αεροπλάνου ή όχι (θέσεις Α και Β). 
-    bool firstClass;
-
-
-public:
-//Constructor:
-// Μια αίτηση αρχικοποιείται με όλες τις παραπάνω παραμέτρους.
-
-// Μπορούμε να ελέγξουμε αν μια πτήση πληρεί τους περιορισμούς μιας αίτησης ( matches ).
-
-// Μπορούμε να ελέγξουμε αν μια αίτηση ζητά δέσμευση Α θέσης ( is luxury class ).
-
-// Μπορούμε να ανακτήσουμε την ταυτότητα του επιβάτη που έκανε την αίτηση ( get id ).
-
-// Μπορούμε να ανακτήσουμε το όνομα και το επώνυμο του επιβάτη που έκανε την αίτηση 
-// (σαν συμβολοσειρά, χωρισμένα με ένα κενό) ( get name ).
-
-// Μπορούμε να ανακτήσουμε το όριο χρόνου στο οποίο ο
-// επιβάτης επιθυμεί να έχει φτάσει στον προορισμό του ( arrived by ).
-    
-    
-};
 
 
 class Flight
@@ -119,6 +72,82 @@ public:
 };
 
 
+
+class Application
+{
+private:
+    // το id του επιβάτη, 
+    int m_id;
+    
+    // το όνομά του, 
+    string m_first_name;
+    
+    // επώνυμο, 
+    string m_surname;
+    
+    // προορισμό, 
+    string m_destination;
+
+    // χρόνο που θέλει για να φτάσει στο αεροδρόμιο 
+    // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο με χρόνο αναχώρησης πριν από αυτόν), 
+    time_t m_time_to_the_airport;
+
+    // χρόνο που θέλει να έχει φτάσει στον προορισμό του 
+    // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο που φτάνει μετά από αυτόν τον χρόνο)
+    int m_arrived_by;
+
+    // αν θέλει να είναι στην οικονομική θέση του αεροπλάνου ή όχι (θέσεις Α και Β). 
+    bool m_luxury_class;
+
+
+public:
+//Constructor:
+// Μια αίτηση αρχικοποιείται με όλες τις παραπάνω παραμέτρους.
+    Application
+    (
+        int id, string first_name, string surname, string destination,
+        time_t time_to_the_airport, time_t arrived_by, bool luxury_class
+    ):  m_id(id), m_first_name(first_name), m_surname(surname), 
+        m_destination(destination), m_time_to_the_airport(time_to_the_airport),
+        m_arrived_by(arrived_by), m_luxury_class(luxury_class)
+    {
+        
+    }
+
+    // Μπορούμε να ελέγξουμε αν μια πτήση πληρεί τους περιορισμούς μιας αίτησης ( matches ).
+    bool matches(const Flight flight)
+    {
+        
+    }
+    
+    // Μπορούμε να ελέγξουμε αν μια αίτηση ζητά δέσμευση Α θέσης ( is luxury class ).
+    bool is_luxury_class()
+    {
+        return m_luxury_class;
+    }
+
+    // Μπορούμε να ανακτήσουμε την ταυτότητα του επιβάτη που έκανε την αίτηση ( get id ).
+    int get_id()
+    {
+        return m_id;
+    }
+
+    // Μπορούμε να ανακτήσουμε το όνομα και το επώνυμο του επιβάτη που έκανε την αίτηση 
+    // (σαν συμβολοσειρά, χωρισμένα με ένα κενό) ( get name ).
+    string get_name()
+    {
+        return m_first_name + ' ' + m_surname;
+    }
+    
+
+// Μπορούμε να ανακτήσουμε το όριο χρόνου στο οποίο ο
+// επιβάτης επιθυμεί να έχει φτάσει στον προορισμό του ( arrived by ).
+    
+    
+};
+
+
+
 class Airport
 {
 private:
@@ -126,24 +155,25 @@ private:
 // ράμετρο την τωρινή ώρα. Τόσο οι πτήσεις όσο και οι αιτήσεις δεν υφίστανται ανεξάρτητα από
 // το αεροδρόμιο. Ο χρόνος ‘κυλά’ και στο πέρασμά του συμβαίνουν γεγονότα που περιγράφουμε
 // στη συνέχεια.  
-    time_t m_currentTime;
+    time_t m_current_time;
     // Το αεροδρόμιο έχει συγκεκριμένο αριθμό από σταθμούς ( terminals ) 
-    int m_terminalsCount;
-
+    int m_terminals_count;
+    
+    std::deque<Application> m_people_waiting;
 
 
 
 
 public:
 // ́Ενα αεροδρόμιο αρχικοποιείται με παραμέτρους τον τωρινό χρόνο και τον αριθμό των σταθμών του. 
-    Airport(time_t currentTime, int terminalsCount):
-        m_currentTime(currentTime), m_terminalsCount(terminalsCount)
+    Airport(time_t current_time, int terminals_count):
+        m_current_time(current_time), m_terminals_count(terminals_count)
     {
         
     }
 
     // Μπορούμε να ανακτήσουμε τον τωρινό χρόνο ( get time ).
-    time_t getTime() { return m_currentTime; }
+    time_t get_time() { return m_current_time; }
 
     // Μπορούμε να δώσουμε όλες τις παραμέτρους μιας αίτησης και να προσθέσουμε την 
     //αίτηση στη λίστα αναμονής των αιτήσεων ( add application ).
@@ -153,9 +183,9 @@ public:
     //      (μέχρι να οριστεί πτήση που να ταιριάζει με την αίτηση).  
     // Όταν ο τωρινός χρόνος περάσει τον χρόνο άφιξης που ορίστηκε στην
     //αίτηση, η αίτηση ακυρώνεται, διαγράφοντάς την από τη λίστα αναμονής.
-    void addApplication(Application &newApplication)
+    void add_application(const Application &application)
     {
-        
+        m_people_waiting.push_back( application );
     }
     
 
@@ -163,9 +193,10 @@ public:
     //συγκεκριμένο id ( cancel applications ). Αυτές μπορεί να βρίσκονται στη λίστα αναμονής ή
     //να έχουν προσθέσει επιβάτες σε πτήσεις. Στη δεύτερη περίπτωση, θα ελευθερώσουμε τις θέσεις
     //στις πτήσεις. 
-    //Returns if no application found with the given id
-    bool cancelApplications(int id)
+    //Returns false if no application found with the given id
+    bool cancel_applications(const int &id)
     {
+        
         
     }
 
@@ -174,7 +205,7 @@ public:
     //Κάθε πτήση καταλαμβάνει απευθείας έναν σταθμό.  
     //Αν δεν υπάρχει διαθέσιμος σταθμός, δεν μπορεί να προστεθεί η πτήση.  
     //Returns the terminal id for the new flight or -1 if no terminal available
-    int addFlight(Flight &newflight)
+    int add_flight(Flight &new_flight)
     {
         
     }
@@ -186,21 +217,21 @@ public:
     // Επίσης όταν ακυρώνεται μια πτήση, οι αιτήσεις μπαίνουν στην λίστα αναμονής 
     //(στην αρχή της).  Οι αιτήσεις μένουν στην λίστα αναμονής μέχρι να βρεθεί πτήση 
     //που να ταιριάζει ή μέχρι να ακυρωθούν.
-    bool cancelFlight(int terminalId)
+    bool cancel_flight(int terminal_id)
     {
         
     }
 
     // Μπορούμε να ανακτήσουμε τον αριθμό των ακυρωθέντων αιτήσεων ως τώρα συνολικά 
     //( failed applications ).
-    int failedApplications()
+    int failed_applications()
     {
         
     }
 
-    // Μπορούμε να εκτυπώσουμε τις διαθέσιμες πτήσεις καθώς και τις πληροφορίες της κάθε πτήσης, με σειρά
-    //ώρας αναχώρησης ( show timetable ).
-    void showTimetable()
+    // Μπορούμε να εκτυπώσουμε τις #διαθέσιμες πτήσεις# καθώς και τις 
+    //πληροφορίες της κάθε πτήσης, με σειρά ώρας αναχώρησης ( show timetable ).
+    void show_timetable()
     {
         
     }
@@ -208,7 +239,7 @@ public:
     // Μπορούμε να εκτυπώσουμε τα ονοματεπώνυμα αυτών που οι αιτήσεις τους βρίσκονται 
     //στην λίστα αναμονής ( show people waiting ).
     //Prints the full names of the applicants in waiting list. Returns the count.
-    int showPeopleWaiting()
+    int show_people_waiting()
     {
         
     }
@@ -219,7 +250,7 @@ public:
     //ονοματεπώνυμα των επιβατών που επιβαίνουν καθώς και ο προορισμός της εκτυπώνονται.
     //Επίσης, αιτήσεις που αναφέρονται στο διάστημα αυτό και δεν
     //ικανοποιήθηκαν διαγράφονται από τη λίστα αναμονής (ακυρώνονται).
-    void flowTime(time_t duration)
+    void flow_time(time_t duration)
     {
         
     }
