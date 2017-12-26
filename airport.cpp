@@ -7,9 +7,8 @@
 #include <string>
 #include <sstream>          // for std::stringstream
 #include <fstream>
-#include <cstdlib>          //For rand()
 #include <ctime>            //For time_t
-#include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
+#include <cstdlib>          //For exit
 #include "airportc.h"
 #include "flightc.h"
 #include "applicationc.h"
