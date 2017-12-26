@@ -1,10 +1,10 @@
 #ifndef APPLICATIONC_H
 #define APPLICATIONC_H
 
-#include "flightc.h"
 #include <string>
 using std::string;
 
+class Flight; //Just a forward declaration so it can be used as parameter type
 
 class Application
 {

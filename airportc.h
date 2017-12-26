@@ -4,6 +4,7 @@
 
 #include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
 #include <ctime>            //For time_t
+#include "appslistc.h"
 #include "applicationc.h"
 #include "flightc.h"
 
@@ -18,7 +19,7 @@ private:
     // Το αεροδρόμιο έχει συγκεκριμένο αριθμό από σταθμούς ( terminals ) 
     int m_terminals_count;
     
-    std::deque<Application> m_people_waiting;
+    Apps_list m_people_waiting;
 
 
 
@@ -44,7 +45,7 @@ public:
     //αίτηση, η αίτηση ακυρώνεται, διαγράφοντάς την από τη λίστα αναμονής.
     void add_application(const Application &application)
     {
-        m_people_waiting.push_back( application );
+        // m_people_waiting.push_back( application );
     }
     
 
