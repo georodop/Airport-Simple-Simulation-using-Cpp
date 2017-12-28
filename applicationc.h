@@ -1,10 +1,11 @@
 #ifndef APPLICATIONC_H
 #define APPLICATIONC_H
 
+#include <ctime>            //For time_t
 #include <string>
 using std::string;
 
-class Flight; //Just a forward declaration so it can be used as parameter type
+class Flight; 
 
 class Application
 {
@@ -39,9 +40,9 @@ public:
     Application
     (
         int id, string first_name, string surname, string destination,
-        time_t time_to_the_airport, time_t arrived_by, bool luxury_class
+        time_t time_to_airport, time_t arrived_by, bool luxury_class
     ):  m_id(id), m_first_name(first_name), m_surname(surname), 
-        m_destination(destination), m_time_to_the_airport(time_to_the_airport),
+        m_destination(destination), m_time_to_airport(time_to_airport),
         m_arrived_by(arrived_by), m_luxury_class(luxury_class)
     {
         
@@ -65,7 +66,7 @@ public:
     time_t arrived_by() { return m_arrived_by; }
     
     // What time can the passenger be at the airport
-    time_t time_at_airport() { return m_time_to_airport + Airport::get_time() }
+    time_t time_at_airport(time_t time_now) { return m_time_to_airport + time_now; }
 };
 
 
