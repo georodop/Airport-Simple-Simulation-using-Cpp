@@ -23,7 +23,7 @@ private:
 
     // χρόνο που θέλει για να φτάσει στο αεροδρόμιο 
     // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο με χρόνο αναχώρησης πριν από αυτόν), 
-    time_t m_time_to_the_airport;
+    time_t m_time_to_airport;
 
     // χρόνο που θέλει να έχει φτάσει στον προορισμό του 
     // (δεν μπορεί να επιβιβαστεί σε αεροπλάνο που φτάνει μετά από αυτόν τον χρόνο)
@@ -51,29 +51,21 @@ public:
     bool matches(const Flight flight);
     
     // Μπορούμε να ελέγξουμε αν μια αίτηση ζητά δέσμευση Α θέσης ( is luxury class ).
-    bool is_luxury_class()
-    {
-        return m_luxury_class;
-    }
+    bool is_luxury_class() { return m_luxury_class; }
 
     // Μπορούμε να ανακτήσουμε την ταυτότητα του επιβάτη που έκανε την αίτηση ( get id ).
-    int get_id()
-    {
-        return m_id;
-    }
+    int get_id() { return m_id; }
 
     // Μπορούμε να ανακτήσουμε το όνομα και το επώνυμο του επιβάτη που έκανε την αίτηση 
     // (σαν συμβολοσειρά, χωρισμένα με ένα κενό) ( get name ).
-    string get_name()
-    {
-        return m_first_name + ' ' + m_surname;
-    }
+    string get_name() { return m_first_name + ' ' + m_surname; }
     
-
-// Μπορούμε να ανακτήσουμε το όριο χρόνου στο οποίο ο
-// επιβάτης επιθυμεί να έχει φτάσει στον προορισμό του ( arrived by ).
+    // Μπορούμε να ανακτήσουμε το όριο χρόνου στο οποίο ο
+    // επιβάτης επιθυμεί να έχει φτάσει στον προορισμό του ( arrived by ).
+    time_t arrived_by() { return m_arrived_by; }
     
-    
+    // What time can the passenger be at the airport
+    time_t time_at_airport() { return m_time_to_airport + Airport::get_time() }
 };
 
 
