@@ -1,6 +1,7 @@
 #ifndef AIRPORTC_H
 #define AIRPORTC_H
 
+#include <iostream>
 
 #include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
 #include <ctime>            //For time_t
@@ -110,8 +111,14 @@ public:
     //ονοματεπώνυμα των επιβατών που επιβαίνουν καθώς και ο προορισμός της εκτυπώνονται.
     //Επίσης, αιτήσεις που αναφέρονται στο διάστημα αυτό και δεν
     //ικανοποιήθηκαν διαγράφονται από τη λίστα αναμονής (ακυρώνονται).
-    void flow_time(time_t duration)
+    void flow_time(const time_t &duration, const time_t &step = 60)
     {
+        time_t end_time = m_current_time + duration;
+        while(m_current_time<end_time)
+        {
+            m_current_time+=step;
+            std::cout << m_current_time << "\n";
+        }
         
     }
 

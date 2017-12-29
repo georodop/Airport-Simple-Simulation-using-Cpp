@@ -53,8 +53,17 @@ int main(int argc, char* argv[])
 
     
     // 1. Θα δημιουργείται ένα αεροδρόμιο
+    struct tm t = {0};  // Initalize to all 0's
+    t.tm_year = 117;    // 0 year is year-1900, so 117 = 2017
+    t.tm_mon = 11;
+    t.tm_mday = 1;
+    t.tm_hour = 0;
+    t.tm_min = 0;
+    
+    
     time_t currentTime(0);
     int terminalCount(0);
+    currentTime = mktime(&t);
     Airport airport1(currentTime, terminalCount);
 
     // 2. Θα δίδονται στο αεροδρόμιο στοιχεία πτήσεων (από αρχείο).
@@ -82,7 +91,8 @@ int main(int argc, char* argv[])
 
 // 4. Θα γίνονται σχετικές εκτυπώσεις ώστε να παρουσιάζεται η κατάσταση του αεροδρομίου.
 
-// 5. Θα κυλά το χρόνο κάποιο χρονικό διάστημα
+    // 5. Θα κυλά το χρόνο κάποιο χρονικό διάστημα
+    airport1.flow_time(duration);
 
 // 6. Θα γίνονται σχετικές εκτυπώσεις ώστε να παρουσιάζεται η κατάσταση του αεροδρομίου.
     
