@@ -49,7 +49,7 @@ public:
     }
 
     // Μπορούμε να ελέγξουμε αν μια πτήση πληρεί τους περιορισμούς μιας αίτησης ( matches ).
-    bool matches(const Flight flight);
+    bool matches(const Flight &flight, const time_t &time_now);
     
     // Μπορούμε να ελέγξουμε αν μια αίτηση ζητά δέσμευση Α θέσης ( is luxury class ).
     bool is_luxury_class() { return m_luxury_class; }
