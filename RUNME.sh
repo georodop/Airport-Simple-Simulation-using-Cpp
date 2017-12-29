@@ -3,7 +3,7 @@
 
 # This is the default argument given to run the program. Change it here or
 # run the program directly from command line giving any integer you want.
-args="50"
+args="600"
 
 repo="https://github.com/georodop/Airport-Simple-Simulation-using-Cpp.git"
 dir="Airport-Simple-Simulation-using-Cpp"
