@@ -29,7 +29,22 @@ private:
 
 public:
     // Μια πτήση αρχικοποιείται με όλες τις παραπάνω παραμέτρους. 
-    Flight();       //ToDo
+    Flight
+    (
+        const string &destination, 
+        const time_t &dep_time, 
+        const time_t &duration,
+        const int &luxury_max_capacity,
+        const int &economy_max_capacity
+    ):  
+        m_destination(destination),
+        m_dep_time(dep_time),
+        m_duration(duration),
+        m_luxury_max_capacity(luxury_max_capacity),
+        m_economy_max_capacity(economy_max_capacity)
+    {
+        
+    }
 
     // Μια πτήση δέχεται μια αίτηση και αν ο αντίστοιχος επιβάτης χωράει στο αεροπλάνο,
     //τον προσθέτει (σαν κλεισμένη θέση) ( add passenger ). 
