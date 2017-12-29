@@ -41,21 +41,21 @@ public:
     bool cancel_reservations(const int &id);
     
     // Μπορούμε να ανακτήσουμε την ώρα αναχώρησης της πτήσης ( departs at ).
-    time_t departs_at();
+    inline time_t departs_at() const { return m_dep_time; }
 
     // Μπορούμε να ανακτήσουμε την ώρα άφιξης της πτήσης στον προορισμό της ( arrives at ).
-    time_t arrives_at();
+    inline time_t arrives_at() const { return (m_dep_time + m_duration); }
 
     // Μπορούμε να ανακτήσουμε τον προορισμό της πτήσης ( get destination ).
-    string get_destination();
+    string get_destination() const{ return m_destination; }
 
     // Μπορούμε να ανακτήσουμε τον αριθμό των διαθέσιμων θέσεων της πτήσης 
     // (ανεξαρτήτως θέσης Α ή Β) ( get available ).
-    int get_available();
+    int get_available() const {}
 
     // Μπορούμε να ανακτήσουμε μια δομή με τις αιτήσεις που έχουν κλειστεί στην 
     // συγκεκριμένη πτήση ( get bookings ).
-    Apps_list get_bookings();
+    Apps_list get_bookings() const;
 
 };
 
