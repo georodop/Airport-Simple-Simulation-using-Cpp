@@ -71,6 +71,11 @@ public:
     // Μπορούμε να ανακτήσουμε μια δομή με τις αιτήσεις που έχουν κλειστεί στην 
     // συγκεκριμένη πτήση ( get bookings ).
     Apps_list get_bookings() const;
+    
+    bool operator< (const Flight &right) const
+    {
+        return m_dep_time < right.m_dep_time;
+    }
 
 };
 
