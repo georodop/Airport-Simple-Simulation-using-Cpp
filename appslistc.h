@@ -2,10 +2,9 @@
 #define APPSLISTC_H
 
 #include "applicationc.h"
-#include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
+#include <list>
 
-
-typedef std::deque<Application> Apps_list;
+typedef std::list<Application> Apps_list;
 
 
 #endif
