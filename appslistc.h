@@ -4,13 +4,8 @@
 #include "applicationc.h"
 #include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
 
-class Apps_list
-{
-private:
 
-public:
-    std::deque<Application> m_applications;
+typedef std::deque<Application> Apps_list;
 
-};
 
 #endif
