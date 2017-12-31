@@ -22,8 +22,8 @@ private:
     time_t m_duration;
     
     // το μέγιστο αριθμό επιβατών σε κάθε θέση (θέσεις Α και Β).
-    int m_luxury_max_capacity;
-    int m_economy_max_capacity;
+    int m_a_capacity;
+    int m_b_capacity;
     
     Apps_list m_bookings;
 
@@ -34,14 +34,14 @@ public:
         const string &destination, 
         const time_t &dep_time, 
         const time_t &duration,
-        const int &luxury_max_capacity,
-        const int &economy_max_capacity
+        const int &a_capacity,
+        const int &b_capacity
     ):  
         m_destination(destination),
         m_dep_time(dep_time),
         m_duration(duration),
-        m_luxury_max_capacity(luxury_max_capacity),
-        m_economy_max_capacity(economy_max_capacity)
+        m_a_capacity(a_capacity),
+        m_b_capacity(b_capacity)
     {
         
     }
