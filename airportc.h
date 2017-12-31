@@ -3,11 +3,11 @@
 
 #include <iostream>
 
-#include <deque>            //Why deque: http://www.gotw.ca/gotw/054.htm
 #include <ctime>            //For time_t
 #include "appslistc.h"
 #include "applicationc.h"
 #include "flightc.h"
+#include "flightslistc.h"
 
 class Airport
 {
@@ -21,9 +21,8 @@ private:
     int m_terminals_count;
     
     Apps_list m_people_waiting;
-
-
-
+    
+    Flights_list m_timetable;
 
 public:
 // ́Ενα αεροδρόμιο αρχικοποιείται με παραμέτρους τον τωρινό χρόνο και τον αριθμό των σταθμών του. 
@@ -46,7 +45,7 @@ public:
     //αίτηση, η αίτηση ακυρώνεται, διαγράφοντάς την από τη λίστα αναμονής.
     void add_application(const Application &application)
     {
-        // m_people_waiting.push_back( application );
+        m_people_waiting.push_back( application );
     }
     
 
@@ -71,6 +70,8 @@ public:
         
     }
     
+    //Adds a flight in the timetable
+    void schedule_flight(const Flight &new_flight);
 
     // Υπάρχει μια διαδικασία ακύρωσης πτήσης ( cancel flight ). Αυτή παίρνει σαν όρισμα τον αριθμό του
     //σταθμού στον οποίο βρίσκεται η πτήση και τη διαγράφει. Οι κρατήσεις της πτήσης που ακυρώ-
@@ -92,10 +93,7 @@ public:
 
     // Μπορούμε να εκτυπώσουμε τις #διαθέσιμες πτήσεις# καθώς και τις 
     //πληροφορίες της κάθε πτήσης, με σειρά ώρας αναχώρησης ( show timetable ).
-    void show_timetable()
-    {
-        
-    }
+    void show_timetable();
 
     // Μπορούμε να εκτυπώσουμε τα ονοματεπώνυμα αυτών που οι αιτήσεις τους βρίσκονται 
     //στην λίστα αναμονής ( show people waiting ).
