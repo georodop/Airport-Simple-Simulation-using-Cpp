@@ -8,10 +8,7 @@ void Airport::schedule_flight(const Flight &new_flight)
 }
 
 
-void Airport::read_flights
-(
-    const char* filename, const int first_line, const int last_line
-)
+void Airport::read_flights ( const char* filename )
 {
     using std::ifstream;
     using std::cerr;
@@ -24,11 +21,10 @@ void Airport::read_flights
     if (!inf)
     {
         // Print an error and exit
-        cerr << "Uh oh, Flights.csv could not be opened for reading!" << endl;
+        cerr << "Oh, " << filename << " could not be opened for reading!" << "\n";
         exit(1);
     }
  
-    // While there's still stuff left to read
     string destination;
     time_t dep_time;
     time_t duration;
@@ -37,6 +33,7 @@ void Airport::read_flights
     string headrow;
     getline(inf, headrow);
     
+    // While there's still stuff left to read
     while (inf)
     {
         // read stuff from the file into a string and print it

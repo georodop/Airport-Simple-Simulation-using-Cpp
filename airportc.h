@@ -120,10 +120,7 @@ public:
         
     }
     
-    void read_flights
-    (
-        const char* filename, int first_line = 2, int last_line = 0
-    );
+    void read_flights ( const char* filename );
 
 };
 
