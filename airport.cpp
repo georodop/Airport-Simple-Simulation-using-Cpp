@@ -6,7 +6,6 @@
 #include <cassert>
 #include <string>
 #include <sstream>          // for std::stringstream
-#include <fstream>
 #include <ctime>            //For time_t
 #include <cstdlib>          //For exit
 #include "airportc.h"
@@ -67,25 +66,8 @@ int main(int argc, char* argv[])
     Airport airport1(currentTime, terminalCount);
 
     // 2. Θα δίδονται στο αεροδρόμιο στοιχεία πτήσεων (από αρχείο).
+    airport1.read_flights("Flights.csv");
     // We'll read from a file called Flights.csv
-    ifstream inf("Flights.csv");
- 
-    // If we couldn't open the input file stream for reading
-    if (!inf)
-    {
-        // Print an error and exit
-        cerr << "Uh oh, Flights.csv could not be opened for reading!" << endl;
-        exit(1);
-    }
- 
-    // While there's still stuff left to read
-    while (inf)
-    {
-        // read stuff from the file into a string and print it
-        std::string strInput;
-        getline(inf, strInput);
-        // cout << strInput << endl;
-    }
 
 // 3. Θα δίδονται στο αεροδρόμιο στοιχεία αιτήσεων.
 
