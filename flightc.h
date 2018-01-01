@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ctime>            //For time_t
+#include <iostream>
 
 #include "appslistc.h"
 #include "applicationc.h"
@@ -76,6 +77,8 @@ public:
     {
         return m_dep_time < right.m_dep_time;
     }
+    
+    friend std::ostream& operator<<(std::ostream& os, const Flight& flight);
 
 };
 
