@@ -77,6 +77,7 @@ int main(int argc, char* argv[])
     airport1.flow_time(duration);
 
 // 6. Θα γίνονται σχετικές εκτυπώσεις ώστε να παρουσιάζεται η κατάσταση του αεροδρομίου.
+    airport1.show_timetable();
     
     return 0;
 }

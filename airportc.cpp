@@ -58,11 +58,11 @@ void Airport::read_flights ( const char* filename )
             {
                 if(!vars[i].empty())
                 {
-                    cout << vars[i] << "\t";
+                    // cout << vars[i] << "\t";
                     i++;
                 }
             }
-            cout << i << endl;
+            // cout << i << endl;
             std::stringstream var1(vars[1]);
             std::stringstream var2(vars[2]);
             std::stringstream var3(vars[3]);
@@ -84,34 +84,23 @@ void Airport::read_flights ( const char* filename )
             Flight flight(destination, dep_time, duration, a_capacity, b_capacity);
             Airport::schedule_flight(flight);
         }
-        
     }
+}
+
+
+
+void Airport::show_timetable()
+{
+    using std::cout;
+    using std::endl;
     
-    // Assumes well formated file with columns count = variables count
-    /*
-    while (csv)
+    Flights_list::iterator iter;
+    // cout<<m_timetable.size()<<endl;
+    // int ii=0;
+    for(iter=m_timetable.begin(); iter!=m_timetable.end();++iter)
     {
-        int vars_count = 6;
-        std::string vars[vars_count];
-        for(int column(0); column < vars_count && csv ; column++)
-        {
-            std::string var;
-            getline(csv, var, ',');
-            if(!var.empty())
-            {
-                vars[column] = var;
-                cout << vars[column] << " - ";
-            }
-            if(column == (vars_count - 1))
-            {
-                std::string lastvar;
-                getline(csv, lastvar);
-                if(!lastvar.empty())
-                    cout << lastvar << endl;
-            }
-        }
+        // ii+=1;
+        // cout<<ii<<endl;
+        cout << (*iter) << endl;
     }
-    */
-    
-    
 }
