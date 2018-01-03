@@ -1,12 +1,12 @@
 flightNr,destination,departureTime,duration,aClassCapacity,bClassCapacity
-1,a,1,4,25,75
+1,a,11,4,25,75
 2,b,2,6,40,80
 3,c,3,2,25,75
 4,d,4,5,25,75
 5,e,5,1,25,75
 6,f,6,7,40,80
 7,g,7,2,25,75
-8,h,8,3,25,75
+8,h,88,3,25,75
 9,i,9,8,40,80
 10,j,10,2,25,75
 11,k,11,3,25,75
