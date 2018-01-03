@@ -69,7 +69,8 @@ int main(int argc, char* argv[])
     airport1.read_flights("Flights.csv");
     // We'll read from a file called Flights.csv
 
-// 3. Θα δίδονται στο αεροδρόμιο στοιχεία αιτήσεων.
+    // 3. Θα δίδονται στο αεροδρόμιο στοιχεία αιτήσεων.
+    airport1.read_applications("Applications.csv");
 
 // 4. Θα γίνονται σχετικές εκτυπώσεις ώστε να παρουσιάζεται η κατάσταση του αεροδρομίου.
 

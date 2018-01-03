@@ -121,6 +121,8 @@ public:
     }
     
     void read_flights ( const char* filename );
+    
+    void read_applications ( const char* filename );
 
 };
 
