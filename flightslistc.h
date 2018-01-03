@@ -4,7 +4,7 @@
 #include "flightc.h"
 #include <set>
 
-typedef std::set<Flight> Flights_list;
+typedef std::multiset<Flight> Flights_list;
 
 
 #endif
