@@ -67,6 +67,8 @@ public:
     
     // What time can the passenger be at the airport
     time_t time_at_airport(time_t time_now) { return m_time_to_airport + time_now; }
+    
+    friend std::ostream& operator<<(std::ostream& os, const Application& app);
 };
 
 

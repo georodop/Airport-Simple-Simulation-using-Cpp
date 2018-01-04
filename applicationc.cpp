@@ -21,3 +21,13 @@ bool Application::matches(const Flight &flight, const time_t &time_now)
     return false;
     
 }
+
+
+std::ostream& operator<<(std::ostream& os, const Application& app)  
+{  
+    os << app.m_id << '\t' << app.m_first_name << '\t' 
+        << app.m_surname << '\t' << app.m_destination << '\t' 
+        << app.m_time_to_airport << '\t' << app.m_arrived_by << '\t'
+        << ((app.m_luxury_class) ? "A" : "B") << '\t';
+    return os;  
+}  
