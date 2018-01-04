@@ -206,12 +206,14 @@ int Airport::show_people_waiting()
     
     Apps_list::iterator iter;
     // cout<<m_people_waiting.size()<<endl;
-    // int ii=0;
+    int ii=0;
     for(iter=m_people_waiting.begin(); iter!=m_people_waiting.end();++iter)
     {
-        // ii+=1;
-        // cout<<ii<<endl;
-        cout << (*iter) << endl;
+        ii+=1;
+        // cout << (*iter) << endl;
+        cout << (*iter).get_name() << endl;
     }
+    cout<<ii<<endl;
+    // return ii;
 }
 
