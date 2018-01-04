@@ -213,7 +213,7 @@ int Airport::show_people_waiting()
         // cout << (*iter) << endl;
         cout << (*iter).get_name() << endl;
     }
-    cout<<ii<<endl;
-    // return ii;
+    // cout<<ii<<endl;
+    return ii;
 }
 
