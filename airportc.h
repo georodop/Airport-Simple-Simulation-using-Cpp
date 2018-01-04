@@ -98,10 +98,7 @@ public:
     // Μπορούμε να εκτυπώσουμε τα ονοματεπώνυμα αυτών που οι αιτήσεις τους βρίσκονται 
     //στην λίστα αναμονής ( show people waiting ).
     //Prints the full names of the applicants in waiting list. Returns the count.
-    int show_people_waiting()
-    {
-        
-    }
+    int show_people_waiting();
 
     // Η διαδικασία flow time , με όρισμα το χρονικό διάστημα που θέλουμε να περάσει,
     //κινεί το χρόνο. Κατά την διαδικασία αυτή, κάθε πτήση που είναι να αναχωρήσει 

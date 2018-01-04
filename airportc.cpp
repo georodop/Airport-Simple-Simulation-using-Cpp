@@ -197,3 +197,21 @@ void Airport::read_applications ( const char* filename )
         }
     }
 }
+
+
+int Airport::show_people_waiting()
+{
+    using std::cout;
+    using std::endl;
+    
+    Apps_list::iterator iter;
+    // cout<<m_people_waiting.size()<<endl;
+    // int ii=0;
+    for(iter=m_people_waiting.begin(); iter!=m_people_waiting.end();++iter)
+    {
+        // ii+=1;
+        // cout<<ii<<endl;
+        cout << (*iter) << endl;
+    }
+}
+

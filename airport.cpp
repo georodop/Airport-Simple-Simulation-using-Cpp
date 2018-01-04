@@ -79,6 +79,7 @@ int main(int argc, char* argv[])
 
 // 6. Θα γίνονται σχετικές εκτυπώσεις ώστε να παρουσιάζεται η κατάσταση του αεροδρομίου.
     airport1.show_timetable();
+    airport1.show_people_waiting();
     
     return 0;
 }
